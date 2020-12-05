@@ -1,0 +1,40 @@
+{% extends 'base/listas.html' %}
+{% load static %}
+{% block icono %}
+    <i class="fas fa-chalkboard-teacher"></i>
+{% endblock %}
+{% block titulo %}
+    Docentes
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Profesión</th>
+        <th scope="col">Contrato</th>
+        <th scope="col">Acción</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for p in object_list %}
+
+        <tr>
+            <td> {{ p.id_docente }}</td>
+            <td> {{ p.persona }}</td>
+            <td> {{ p.profesion }}</td>
+            <td> {{ p.contrato }}</td>
+            <td>
+                <button type="button"  class="btn btn-warning btn-xs btn-flat">
+                    <i class="fas fa-edit" ></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs btn-flat">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+
+    {% endfor %}
+{% endblock %}

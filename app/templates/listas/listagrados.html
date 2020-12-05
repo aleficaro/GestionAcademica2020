@@ -1,0 +1,26 @@
+{% extends 'base/listas.html' %}
+{% load static %}
+{% block head_list %}
+<script src="{% static 'jsmodelos/listagrados.js' %}"></script>
+{% endblock %}
+{% block titulo %}
+    Grados
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">JORNADA</th>
+        <th scope="col">GRADO</th>
+        <th scope="col">CAPACIDAD</th>
+        <th scope="col">acción</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}

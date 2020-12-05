@@ -1,0 +1,32 @@
+{% extends 'base/listas.html' %}
+{% load static %}
+{% block head_list %}
+    <script src="{% static 'jsmodelos/listaacudientes.js' %}"></script>
+{% endblock %}
+{% block icono %}
+    <i class="fas fa-chalkboard-teacher"></i>
+{% endblock %}
+{% block titulo %}
+    Acudientes
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">PERSONA</th>
+        <th scope="col">PERSONA</th>
+
+        <th scope="col">PARENTESCO</th>
+        <th scope="col">OCUPACIÓN</th>
+        <th scope="col">ACCIÓN</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

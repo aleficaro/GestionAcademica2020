@@ -1,0 +1,32 @@
+{% extends 'base/listas.html' %}
+{% load static %}
+{% block head_list %}
+    <script src="{% static 'jsmodelos/listaestudiantes.js' %}"></script>
+{% endblock %}
+{% block icono %}
+    <i class="fas fa-chalkboard-teacher"></i>
+{% endblock %}
+{% block titulo %}
+    Estudiantes
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">PERSONA</th>
+        <th scope="col">SANGRE</th>
+        <th scope="col">DISCAPACIDAD</th>
+        <th scope="col">VIGENCIA</th>
+        <th scope="col">ACCIÓN</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+
+{% block javascript %}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base/listas.html' %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static 'jsmodelos/listapagos.js' %}"></script>
+{% endblock head_list%}
+
+{% block icono %}
+<i class="fas fa-cash-register"></i>
+{% endblock %}
+{% block titulo %}
+    Docentes
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Valor Pago</th>
+        <th scope="col">Tipo Pago</th>
+        <th scope="col">Fecha Pago</th>
+        <th scope="col">Acción</th>
+    </tr>
+{% endblock columns %}
+
+{% block rows %}
+{% endblock rows%}
+
+{% block javascript %}
+
+{% endblock %}

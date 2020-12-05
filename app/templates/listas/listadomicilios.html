@@ -1,0 +1,33 @@
+{% extends 'base/listas.html' %}
+{% load static %}
+{% block head_list %}
+    <script src="{% static 'jsmodelos/listadomicilios.js' %}"></script>
+{% endblock %}
+{% block icono %}
+    <i class="fas fa-chalkboard-teacher"></i>
+{% endblock %}
+{% block titulo %}
+    Domicilios
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">PERSONA</th>
+        <th scope="col">CIUDAD</th>
+        <th scope="col">BARRIO</th>
+        <th scope="col">DIRECCIÓN</th>
+        <th scope="col">ACCIÓN</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+
+

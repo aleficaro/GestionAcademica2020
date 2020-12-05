@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <!-- Template Main CSS File -->
+    <link href="{% static 'lib/iPortfolio/assets/css/style.css' %}" rel="stylesheet">
+    <!-- Favicons icono en la pestaña y url-->
+    <link href="{% static 'lib/iPortfolio/assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'lib/iPortfolio/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'lib/iPortfolio/plugins/font-awesome-5.11.1/css/all.min.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{% static 'lib/iPortfolio/plugins/jquery/jquery.min.js' %}"></script>
+    <!--swetalert para alertas-->
+    <script src="{% static 'lib/sweetalert2-10.3.5/dist/sweetalert2.all.min.js' %}"></script>
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'lib/iPortfolio/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/iPortfolio/assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/iPortfolio/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/iPortfolio/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/iPortfolio/assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/iPortfolio/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'lib/iPortfolio/assets/css/style.css' %}" rel="stylesheet">
+    <!-- Block head -->
+    {% block head %}
+
+    {% endblock %}
+</head>
+{% block body %}
+
+{% endblock %}
+</html>

@@ -1,0 +1,63 @@
+{% extends 'base/body.html' %}
+
+{% block content %}
+    <form method="post" action=".">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">
+                    {% block icono %}
+                        <i class="fas fa-plus"></i><!--Aqui va el icono de los titulos de las listas-->
+                    {% endblock %}
+                    {{ title }} <!--Aqui va el titulo desde el context que esta en el view-->
+                </h3>
+            </div>
+            <div class="card-body">
+                {% csrf_token %}
+
+                {% if form.errors %} <!--Esta es la condicion para mostrar errores-->
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <h5><i class="icon fas fa-ban"></i> Ha ocurrido un error al querer guardar un registro.</h5>
+                    </div>
+                {% endif %}
+
+                <!--aqui se muestran las etiquetas y los campos del modelo-->
+                {% for campo in form.visible_fields %}
+                    <div class="form-group">
+                        <label> {{ campo.label }}:</label>
+                        {{ campo }}
+                    </div>
+                {% endfor %}
+
+            <!--Aqui se muestran los botones del card-->
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        {% if form.errors %} //Aqui se evalua si hay errores en el formulario//
+            var errores = ''; // Se declara la variable que va a contener los errores
+
+            {% for campo in form %} // se captura el error en la variable campo
+                {% for error in campo.errors %} // se le asignan los errores a la variable errores con un salto de pagina.
+                    errores+='{{ error }}\n';
+                {% endfor %}
+            {% endfor %}
+
+            // Se utiliza la ventana para mostrar el error de la libreria sweetalert2
+            Swal.fire({
+                title: 'Error!',
+                text: errores,
+                icon: 'error'
+            })
+        {% endif %}
+
+
+    </script>
+
+{% endblock content %}
