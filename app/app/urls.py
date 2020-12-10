@@ -22,13 +22,15 @@ from registros.views.Pagos.views import ListaPagos
 from registros.views.acudientes.views import ListaAcudientes
 from registros.views.docentes.views import ListaDocentes
 
+
 from registros.views.grados.views import ListaGrados
 from registros.views.jornada.views import ListaJornadas
 from registros.views.materias.views import ListaMaterias, FormularioMaterias
 from registros.views.personas.views import ListaPersona, FormularioPersona
-from registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
+from registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante 
 from registros.views.domicilio.views import ListaDomicilios
 from registros.views.matriculas.views import ListaMatriculas
+
 
 
 
@@ -47,6 +49,8 @@ urlpatterns = [
     path('crear_persona/', FormularioPersona.as_view(), name='formulariopersona'),
     path('crear_materia/', FormularioMaterias.as_view(), name='formulariomaterias'),
     path('crear_estudiante/', FormularioEstudiante.as_view(), name='formularioestudiante'),
+    
+    
 
 
 
