@@ -70,7 +70,7 @@ class Estudiante(models.Model):
 
 class Docente(models.Model):
     persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
-    id_docente = models.CharField(default=5000, max_length=15, primary_key=True, verbose_name='id')
+    id_docente = models.CharField(max_length=10, default=5000, primary_key=True, verbose_name='id')
     profesion = models.CharField(max_length=50, verbose_name='Profesión', null=True, blank=False)
     contrato = models.CharField(max_length=20, choices=[('IDF', 'Indefinido'), ('PS', 'Prestación de servicios'), ('An', 'Anual'), ('ETC', 'etc')])
 
@@ -95,15 +95,16 @@ class Pago(models.Model):
     id_pago = models.CharField(max_length=10, primary_key=True, verbose_name='id pago')
     v_pago = models.IntegerField(verbose_name='Valor de pago', default=0)
     fe_pago = models.DateField(default=datetime.now, editable=False, verbose_name='Fecha de pago')
-    tipo_pago = models.CharField(max_length=20, null=True, choices=[('EF', 'Efectivo'), ('BC', 'Banco'), ('TR','Tranferencia')])
+    tipo_pago = models.CharField(max_length=20, null=True, choices=[('Efectivo', 'Efectivo'), ('Banco', 'Banco'), ('Transferencia','Tranferencia')])
 
     def __str__(self):
-        txt = '{} pesos'.format(self.v_pago)
+        txt = '{} '.format(self.estudiante.persona.nombrecompleto()) # nombre de quien realizo pago en la vista admin
         return txt
 
     def toJSON(self):
         tpagos = model_to_dict(self)
-        tpagos['fe_pago'] = self.fe_pago.strftime('%y-%m-%d') # convertir fecha a str
+        tpagos['fe_pago'] = self.fe_pago.strftime('%d-%m-%y') # convertir fecha a str
+        tpagos['estudiante'] = self.estudiante.persona.nombrecompleto() # se envia el nombre de quien pago a la lista
         return tpagos
 
     class Meta:
