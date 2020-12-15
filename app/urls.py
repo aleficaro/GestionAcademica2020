@@ -18,12 +18,13 @@ from django.urls import path
 
 
 # Se registran las url para poder ser renderizadas
+from login.views import FormularioLogin
 from registros.views.Pagos.views import ListaPagos, FormularioPago
 from registros.views.acudientes.views import ListaAcudientes
 from registros.views.docentes.views import ListaDocentes
 from registros.views.docentes.views import FormularioDocente
-from registros.views.grados.views import ListaGrados
-from registros.views.jornada.views import ListaJornadas
+from registros.views.grados.views import ListaGrados, VistaFormularioGrado
+from registros.views.jornada.views import ListaJornadas, VistaFormularioJornada
 from registros.views.materias.views import ListaMaterias, FormularioMaterias
 from registros.views.personas.views import ListaPersona, FormularioPersona
 from registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
@@ -39,9 +40,9 @@ urlpatterns = [
     path('materias/', ListaMaterias.as_view(), name='listamaterias'),
     path('docentes/', ListaDocentes.as_view(), name='listadocentes'),
     path('pagos/', ListaPagos.as_view(), name='listapagos'),
-    path('grados/', ListaGrados.as_view()),
+    path('grados/', ListaGrados.as_view(), name='listagrado'),
     path('estudiantes/', ListaEstudiantes.as_view(), name='listaestudiantes'),
-    path('jornadas/', ListaJornadas.as_view()),
+    path('jornadas/', ListaJornadas.as_view(), name='listajornada'),
     path('acudientes/', ListaAcudientes.as_view()),
     path('domicilios/', ListaDomicilios.as_view(), name='listadomicilios'),
     path('matriculas/', ListaMatriculas.as_view()),
@@ -51,6 +52,9 @@ urlpatterns = [
     path('crear_docente/', FormularioDocente.as_view(), name='formulariodocente'),
     path('crear_domicilio/', FormularioDomicilio.as_view(), name='formulariodomicilio'),
     path('crear_pago/', FormularioPago.as_view(), name='formulariopago'),
+    path('crear_jornada/', VistaFormularioJornada.as_view(), name='formulariojornada'),
+    path('crear_grado/', VistaFormularioGrado.as_view(), name='formulariogrado'),
+    path('login/', FormularioLogin.as_view()),
 
     
     

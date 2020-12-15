@@ -116,7 +116,7 @@ class Pago(models.Model):
 
 class Jornada(models.Model):
     id_jornada = models.CharField(verbose_name='Id jornada', primary_key=True, default='', max_length=20)
-    jornada = models.CharField('Jornada', max_length=50, choices=[('mañana', 'Mañana'), ('tarde', 'Tarde')])
+    jornada = models.CharField('Jornada', max_length=50, choices=[('Mañana', 'Mañana'), ('Tarde', 'Tarde'), ('Noche', 'Noche')])
 
     def __str__(self):
         txt = '{}'.format(self.jornada)
@@ -145,6 +145,7 @@ class Grado(models.Model):
 
     def toJSON(self):
         jgrados = model_to_dict(self)
+        jgrados['jornada']= '{}'.format(self.jornada)
         return jgrados
 
     class Meta:
