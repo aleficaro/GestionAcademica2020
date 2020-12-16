@@ -13,6 +13,17 @@ Libreria instalada en Django
 Conección a base de datos postgres
 psycopg2	2.8.5	2.8.5
 ________________________________
+Libreria para gestionar los atributos de los campos en las plantillas
+   django-widget-tweaks	1.4.8	1.4.8
+1. Instalacion: pip install django-widget-tweaks
+2. Para agregarla proyecto hay que registrarla:
+INSTALLED_APPS = [
+    ...
+    'widget_tweaks',
+    ...
+]
+Leer doc:   https://github.com/jazzband/django-widget-tweaks
+_________________________________________________
 
 pytz	2020.1	2020.1
 setuptools	49.6.0	49.6.0
