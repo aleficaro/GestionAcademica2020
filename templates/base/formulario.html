@@ -29,13 +29,20 @@
                     </div>
                 {% endfor %}
 
-            <!--Aqui se muestran los botones del card-->
+                <!--Aqui se muestran los botones del card-->
             </div>
             <div class="card-footer">
+
                 <button type="submit" class="btn btn-primary btn-flat">
                     <i class="fas fa-save"></i> Guardar
                 </button>
+                <a href="{{ url_cancelar }}" class="btn btn-primary btn-flat">
+                    <i class="fas fa-arrow-up"></i> Cancelar
+                </a>
+
+
             </div>
+
         </div>
     </form>
 
@@ -44,8 +51,9 @@
             var errores = ''; // Se declara la variable que va a contener los errores
 
             {% for campo in form %} // se captura el error en la variable campo
-                {% for error in campo.errors %} // se le asignan los errores a la variable errores con un salto de pagina.
-                    errores+='{{ error }}\n';
+                {% for error in campo.errors %}
+                    // se le asignan los errores a la variable errores con un salto de pagina.
+                    errores += '{{ error }}\n';
                 {% endfor %}
             {% endfor %}
 
@@ -57,7 +65,7 @@
             })
         {% endif %}
 
-
+        alert_jquery_confirm();
     </script>
 
 {% endblock content %}

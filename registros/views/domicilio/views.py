@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -13,6 +14,7 @@ class ListaDomicilios(ListView):
     template_name = 'listas/listadomicilios.html'
 
     @method_decorator(csrf_exempt)
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
@@ -46,6 +48,7 @@ class FormularioDomicilio(CreateView):
     template_name = 'formularios/formdomicilio.html'
     success_url = reverse_lazy('listadomicilios')
 
+    @method_decorator(login_required)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear Domicilio'

@@ -7,15 +7,14 @@ $(function () {
         ajax: {
             url: window.location.pathname,
             type: 'POST',
-            data: {'action': 'buscardato'}, // parametros
+            data: {'action': 'buscarmateria'}, // parametros
             dataSrc: ""
         },
         columns: [
-            // se toman los valores de las columnas del modelo
-            {"data": "id_matricula"},
-            {"data": "estudiante"},
+            {"data": "id_materia"},
             {"data": "grado"},
-            {"data": "fecha_matricula"},
+            {"data": "nmateria"},
+            {"data": "intensidad"},
             {"data": "ACCION"},
         ],
         columnDefs: [
@@ -24,8 +23,8 @@ $(function () {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    var buttons = '<a href="/erp/category/update/' + row.id_pago + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a href="/erp/category/delete/' + row.id_pago + '/" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
+                    var buttons = '<a href="" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
+                    buttons += '<a href="/erp/category/delete/' + row.dni + '/" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
                     return buttons;
                 }
             },

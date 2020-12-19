@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.conf.global_settings import LOGIN_URL
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -127,3 +129,7 @@ STATICFILES_DIRS = [
 ]
 # Se utiliza esta variable para redireccionar a un template cuando el usuario se loguea correctamente.
 LOGIN_REDIRECT_URL= '/admin'
+
+LOGOUT_REDIRECT_URL = '/login/' # constante que redireciona a logout al template que se le indique
+
+LOGIN_URL = '/login/'

@@ -11,7 +11,7 @@ $(function () {
             dataSrc: ""
         },
         columns: [
-            {"data": "id_acudiente"},
+            {"data": "id_acudientes"},
             {"data": "persona"},
             {"data": "estudiante"},
             {"data": "parentesco"},

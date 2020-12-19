@@ -1,39 +1,27 @@
 {% extends 'base/listas.html' %}
 {% load static %}
-{% block icono %}
-<i class="fas fa-book"></i>
+{% block head_list %}
+    <script src="{% static 'jsmodelos/listamaterias.js' %}"></script>
 {% endblock %}
 {% block titulo %}
-    Personas
+    {{ title }}
 {% endblock %}
 
 
 {% block columns %}
     <tr>
-        <th scope="col">Grado</th>
-        <th scope="col">Id_materia</th>
-        <th scope="col">materia</th>
-        <th scope="col">intensidad</th>
-        <th scope="col">acción</th>
+        <th scope="col">ID MATERIA</th>
+        <th scope="col">GRADO</th>
+        <th scope="col">MATERIA</th>
+        <th scope="col">INTENSIDAD</th>
+        <th scope="col">ACCIÓN</th>
     </tr>
 {% endblock %}
 
 {% block rows %}
-    {% for p in object_list %}
-        <tr>
-            <td> {{ p.grado }}</td>
-            <td> {{ p.id_materia }}</td>
-            <td> {{ p.nmateria }}</td>
-            <td> {{ p.intensidad }}</td>
-            <td>
-                <button type="button" class="btn btn-warning btn-xs btn-flat">
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs btn-flat">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </td>
-        </tr>
 
-    {% endfor %}
+{% endblock %}
+
+{% block javascript %}
+
 {% endblock %}

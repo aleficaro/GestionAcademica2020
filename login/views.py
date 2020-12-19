@@ -1,4 +1,4 @@
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
 
 
@@ -17,3 +17,5 @@ class FormularioLogin(LoginView):
         context = super().get_context_data(**kwargs) # se obtienetodo lo que tiene el contex data
         context['title'] = 'Iniciar sesión'
         return context
+
+

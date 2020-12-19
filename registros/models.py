@@ -55,6 +55,7 @@ class Estudiante(models.Model):
         txt = '{}'.format(self.persona)
         return txt
 
+
     def toJSON(self):
         t_estudiantes = model_to_dict(self)
         t_estudiantes['persona'] = '{}'.format(self.persona.nombrecompleto())
@@ -168,6 +169,8 @@ class Acudiente(models.Model):
 
     def toJSON(self):
         jacudiente = model_to_dict(self)
+        jacudiente['persona'] = '{} {}'.format(self.persona.nombres, self.persona.apellidos)
+        jacudiente['estudiante'] = '{}'.format(self.persona.nombrecompleto())
         return jacudiente
 
     class Meta:
@@ -212,6 +215,13 @@ class Materia(models.Model):
         txt = '{}'.format(self.nmateria)
         return txt
 
+    def toJSON(self):
+        jmateria = model_to_dict(self)
+        jmateria['nmateria'] = '{}'.format(self.nmateria) # se modifica el valor que va en la columna de la lista
+        jmateria['intensidad'] = '{} horas'.format(self.intensidad) # se modifica el valor que va en la columna de la lista
+        jmateria['grado'] = '{}'.format(self.grado) # se modifica el valor que va en la columna de la lista
+        return jmateria
+
     class Meta:
         verbose_name = 'Materia'
         verbose_name_plural = 'Materias'
@@ -223,14 +233,19 @@ class Matricula(models.Model):
     id_matricula = models.AutoField(primary_key=True)
     estudiante = models.ForeignKey(Estudiante, null=False, blank=False, on_delete=models.CASCADE)
     grado = models.ForeignKey(Grado, null=False, blank=False, on_delete=models.CASCADE)
-    fecha_matricula = models.DateTimeField(auto_now=True)
+
+    fecha_matricula = models.DateField(default=datetime.now, editable=False, verbose_name='Fecha de matricula')
+
 
     def __str__(self):
-        txt = 'Matriculado en : {} el dia {}'.format(self.grado, self.fecha_matricula)
+        txt = '{} {} {} {}'.format(self.id_matricula, self.estudiante, self.grado, self.fecha_matricula)
         return txt
-    
+
     def toJSON(self):
         jmatricula = model_to_dict(self)
+        jmatricula['fecha_matricula'] = self.fecha_matricula.strftime('%d-%m-%y')
+        jmatricula['grado'] = '{}'.format(self.grado.n_grado)
+        jmatricula['estudiante'] = '{}'.format(self.estudiante)
         return jmatricula
 
     class Meta:
