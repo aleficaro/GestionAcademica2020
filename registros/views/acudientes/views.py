@@ -34,6 +34,7 @@ class ListaAcudientes(ListView): # Se utiliza la clase ListView para  crear una 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Acudientes' # Se envia el titulo a traves del diccionario
+        context['url_nuevo_registro'] = success_url = reverse_lazy('formularioacudiente')  # se crea url para utilizarla en el boton nuevo registro
         return context
 
 class FormularioAcudiente(CreateView):
@@ -45,6 +46,5 @@ class FormularioAcudiente(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear Acudiente' #titulo de la pestaña y del card
-        context['url_nuevo_registro'] = success_url = reverse_lazy('formularioacudiente') # se crea url para utilizarla en el boton nuevo registro
         context['url_cancelar'] = success_url = reverse_lazy('listaacudientes') # se crea url para utilizarla en el boton nuevo registro
         return context

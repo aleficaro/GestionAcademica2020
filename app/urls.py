@@ -16,8 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-
-
 # Se registran las url para poder ser renderizadas
 from login.views import *
 from registros.views.Pagos.views import ListaPagos, FormularioPago
@@ -27,15 +25,15 @@ from registros.views.docentes.views import FormularioDocente
 from registros.views.grados.views import ListaGrados, VistaFormularioGrado
 from registros.views.jornada.views import ListaJornadas, VistaFormularioJornada
 from registros.views.materias.views import ListaMaterias, FormularioMaterias
+from registros.views.matriculas.views import FormularioMatricula
 from registros.views.personas.views import ListaPersona, FormularioPersona, EditarPersona
 from registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
 from registros.views.domicilio.views import ListaDomicilios, FormularioDomicilio
 from registros.views.matriculas.views import ListaMatriculas
 
-
-
-
 urlpatterns = [
+    # Listas
+
     path('admin/', admin.site.urls),
     path('personas/', ListaPersona.as_view(), name='listapersonas'),
     path('materias/', ListaMaterias.as_view(), name='listamaterias'),
@@ -46,9 +44,9 @@ urlpatterns = [
     path('jornadas/', ListaJornadas.as_view(), name='listajornada'),
     path('acudientes/', ListaAcudientes.as_view(), name='listaacudientes'),
     path('domicilios/', ListaDomicilios.as_view(), name='listadomicilios'),
-    path('matriculas/', ListaMatriculas.as_view()),
+    path('matriculas/', ListaMatriculas.as_view(), name="listamatriculas"),
 
-
+    # Formularios
     path('crear_persona/', FormularioPersona.as_view(), name='formulariopersona'),
     path('crear_materia/', FormularioMaterias.as_view(), name='formulariomaterias'),
     path('crear_estudiante/', FormularioEstudiante.as_view(), name='formularioestudiante'),
@@ -56,11 +54,16 @@ urlpatterns = [
     path('crear_domicilio/', FormularioDomicilio.as_view(), name='formulariodomicilio'),
     path('crear_acudiente/', FormularioAcudiente.as_view(), name='formularioacudiente'),
     path('crear_pago/', FormularioPago.as_view(), name='formulariopago'),
-    path('crear_jornada/', VistaFormularioJornada.as_view(), name='formulariojornada'),
     path('crear_grado/', VistaFormularioGrado.as_view(), name='formulariogrado'),
-    path('login/', FormularioLogin.as_view()),
-    path('logout/', LogoutView.as_view(), name='logout'), # Url para cerrar sesion e ir al template de login
+    path('crear_matricula/', FormularioMatricula.as_view(), name='formulariomatricula'),
+    path('crear_jornada/', VistaFormularioJornada.as_view(), name='formulariojornada'),
+
+    # Editar
+
     path('editar_persona/<int:pk>', EditarPersona.as_view(), name='editarpersona'),
 
+    # Inicio y cierre de sesion
+    path('login/', FormularioLogin.as_view()),
+    path('logout/', LogoutView.as_view(), name='logout'),  # Url para cerrar sesión e ir al template de login
 
 ]

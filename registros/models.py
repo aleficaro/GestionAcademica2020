@@ -16,7 +16,7 @@ class Persona(models.Model):
     edad = models.SmallIntegerField(verbose_name='Edad')
     correo = models.EmailField(max_length=70, verbose_name='Correo')
     telefono = models.CharField(max_length=30, verbose_name='Telefono')
-    #imagen = models.ImageField('Foto', upload_to='imagenes', null=True, blank='')
+    #foto = models.ImageField('Foto', upload_to='imagenes', null=True, blank='')
     eps = models.CharField(max_length=100, null=True, blank=True, verbose_name='EPS')
     fe_registro = models.DateField(default=datetime.now, verbose_name='Fecha de registro')
 
@@ -158,19 +158,23 @@ class Grado(models.Model):
 
 class Acudiente(models.Model):
     persona = models.ForeignKey(Persona, on_delete=models.CASCADE)
-    estudiante = models.ManyToManyField(Estudiante)
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
     id_acudiente = models.CharField('Id Acudiente', primary_key=True, max_length=20)
-    parentesco = models.CharField('Parentesco', default='', max_length=30, choices=[('padre', 'Padre'), ('madre', 'Madre'), ('hermano', 'Hermano'), ('tio', 'Tio')])
-    ocupacion = models.CharField('Ocupación', default='', max_length=50, choices=[('ingeniero', 'Ingeniero'), ('abogado', 'Abogado'), ('independiente', 'Independiente')])
+    parentesco = models.CharField('Parentesco', default='', max_length=30, choices=[('Padre', 'Padre'), ('Madre', 'Madre'), ('Hermano', 'Hermano'), ('Tio', 'Tio')])
+    ocupacion = models.CharField('Ocupación', default='', max_length=50, choices=[('Ingeniero', 'Ingeniero'), ('Abogado', 'Abogado'), ('Independiente', 'independiente')])
 
     def __str__(self):
-        txt = '{} es acudiente de {}'.format(self.persona, self.estudiante)
+        txt = 'cedula {}: {} es el {} de {}'.format(self.persona.dni, self.persona, self.parentesco, self.estudiante)
+
         return txt
+
+
 
     def toJSON(self):
         jacudiente = model_to_dict(self)
-        jacudiente['persona'] = '{} {}'.format(self.persona.nombres, self.persona.apellidos)
-        jacudiente['estudiante'] = '{}'.format(self.persona.nombrecompleto())
+        jacudiente['persona'] = '{}'.format(self.persona)
+        jacudiente['estudiante'] = '{}'.format(self.estudiante)
+        jacudiente['id_acudiente'] = '{}'.format(self.persona.dni)
         return jacudiente
 
     class Meta:
@@ -233,7 +237,6 @@ class Matricula(models.Model):
     id_matricula = models.AutoField(primary_key=True)
     estudiante = models.ForeignKey(Estudiante, null=False, blank=False, on_delete=models.CASCADE)
     grado = models.ForeignKey(Grado, null=False, blank=False, on_delete=models.CASCADE)
-
     fecha_matricula = models.DateField(default=datetime.now, editable=False, verbose_name='Fecha de matricula')
 
 
@@ -246,6 +249,7 @@ class Matricula(models.Model):
         jmatricula['fecha_matricula'] = self.fecha_matricula.strftime('%d-%m-%y')
         jmatricula['grado'] = '{}'.format(self.grado.n_grado)
         jmatricula['estudiante'] = '{}'.format(self.estudiante)
+        jmatricula['id_matricula'] = '{}'.format(self.estudiante.persona.dni)
         return jmatricula
 
     class Meta:

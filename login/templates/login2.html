@@ -1,0 +1,70 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="{% static 'lib/login/style.css' %}" rel='stylesheet' type='text/css'>
+    <!--swetalert para alertas-->
+    <script src="{% static 'lib/sweetalert2-10.3.5/dist/sweetalert2.all.min.js' %}"></script>
+    <title>{{ title }}</title>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="login-button">
+    <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png"></img>
+</div>
+<div id="container">
+    <h1>Iniciar Sesión</h1>
+    <span class="close-btn">
+    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    </span>
+
+    <form action="." method="post">
+        <input type="hidden" name='next' value="{{ next }}">
+        {% csrf_token %}
+
+        <div class="input-group mb-3">
+            {{ form.username | add_class:'form-control' | attr:'autocomplete:off' | attr:'placeholder:Usuario' }}
+
+        </div>
+        <div class="input-group mb-3">
+            {{ form.password | add_class:'form-control'| attr:'autocomplete:off' | attr:'placeholder:Contraseña' }}
+         <button id="ingresar" type="submit" ><i class="fas fa-sign-in-alt"></i> Ingresar
+        </button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Manejo de errores en el formulario -->
+<script type="application/javascript">
+    {% if form.errors %} //Aqui se evalua si hay errores en el formulario//
+        var errores = ''; // Se declara la variable que va a contener los errores
+
+        {% for campo in form %} // se captura el error en la variable campo
+            {% for error in campo.errors %}
+                // se le asignan los errores a la variable errores con un salto de pagina.
+                errores += '{{ error }}\n';
+            {% endfor %}
+        {% endfor %}
+
+        // Se utiliza la ventana para mostrar el error de la libreria sweetalert2
+        Swal.fire({
+            title: 'Inicio de sesión incorrecto',
+            text: errores,
+            icon: 'error'
+        })
+    {% endif %}
+</script>
+
+<!-- partial -->
+
+<script src="{% static 'lib/login/TweenMax.min.js' %}"></script>
+<script src="{% static 'lib/login/jquery.min.js' %}"></script>
+<script src="{% static 'lib/login/script.js' %}"></script>
+
+</body>
+</html>

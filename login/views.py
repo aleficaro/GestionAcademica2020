@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 class FormularioLogin(LoginView):
-    template_name = 'login.html'
+    template_name = 'login3.html'
 
 
     # Funcion para validar que el usuario ya esta logueado

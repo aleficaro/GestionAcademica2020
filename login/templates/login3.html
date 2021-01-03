@@ -1,0 +1,70 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'lib/Login3/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="{% static 'lib/sweetalert2-10.3.5/dist/sweetalert2.all.min.js' %}"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<img class="wave" src="{% static 'lib/Login3/img/fondo.jpg' %}">
+<div class="container">
+    <div class="img">
+    </div>
+    <div class="login-content">
+        <form action="." method="post">
+            <input type="hidden" name='next' value="{{ next }}">
+            {% csrf_token %}
+            <img src="{% static 'lib/Login3/img/avatar.svg' %}">
+            <h2 class="title">Bienvenido</h2>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    {{ form.username| add_class:'form-control' | attr:'placeholder:Usuario' | attr:'autocomplete:off' }}
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    {{ form.password | add_class:'form-control' | attr:'placeholder:Clave' |attr:'autocomplete:off' }}
+                </div>
+            </div>
+
+            <input type="submit" class="btn" value="Entrar">
+        </form>
+    </div>
+
+</div>
+
+<script type="application/javascript">
+    {% if form.errors %} //Aqui se evalua si hay errores en el formulario//
+        var errores = ''; // Se declara la variable que va a contener los errores
+
+        {% for campo in form %} // se captura el error en la variable campo
+            {% for error in campo.errors %}
+                // se le asignan los errores a la variable errores con un salto de pagina.
+                errores += '{{ error }}\n';
+            {% endfor %}
+        {% endfor %}
+
+        // Se utiliza la ventana para mostrar el error de la libreria sweetalert2
+        Swal.fire({
+            title: 'Inicio de sesión incorrecto',
+            text: errores,
+            icon: 'error'
+        })
+    {% endif %}
+</script>
+<script type="text/javascript" src="{% static 'lib/Login3/js/main.js' %}"></script>
+
+</body>
+</html>

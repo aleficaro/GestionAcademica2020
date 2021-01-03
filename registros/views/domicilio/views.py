@@ -4,7 +4,6 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-
 from registros.models import *
 from registros.views.domicilio.formulario import FormularioDomicilio
 
@@ -14,7 +13,6 @@ class ListaDomicilios(ListView):
     template_name = 'listas/listadomicilios.html'
 
     @method_decorator(csrf_exempt)
-    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
@@ -48,7 +46,7 @@ class FormularioDomicilio(CreateView):
     template_name = 'formularios/formdomicilio.html'
     success_url = reverse_lazy('listadomicilios')
 
-    @method_decorator(login_required)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear Domicilio'
