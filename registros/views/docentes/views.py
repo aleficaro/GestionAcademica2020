@@ -49,9 +49,9 @@ class FormularioDocente(CreateView):
     template_name = 'formularios/formdocente.html'
     success_url = reverse_lazy('listadocentes')
 
-    @method_decorator(login_required)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear docente'
         context['url_nuevo_registro'] = success_url = reverse_lazy('formulariodocente') # se crea url para utilizarla en el boton nuevo registro
+        context['url_cancelar'] = success_url = reverse_lazy('listadocentes')
         return context

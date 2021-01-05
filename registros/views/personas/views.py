@@ -89,6 +89,6 @@ class EditarPersona(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editar persona'  # titulo de la pestaña y del card
         context['action'] = 'editar'
+        context['url_cancelar'] = success_url = reverse_lazy('listapersonas')
         context['url_editar_registro'] = success_url = reverse_lazy('formulariopersona') # se crea url para utilizarla en el boton nuevo registro
-
         return context

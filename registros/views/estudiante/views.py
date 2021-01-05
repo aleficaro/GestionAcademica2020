@@ -48,4 +48,5 @@ class FormularioEstudiante(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear estudiante'
         context['url_nuevo_registro'] = success_url = reverse_lazy('formularioestudiante') # se crea url para utilizarla en el boton nuevo registro
+        context['url_cancelar'] = success_url = reverse_lazy('listaestudiantes')
         return context

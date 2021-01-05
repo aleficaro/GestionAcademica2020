@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -12,6 +13,7 @@ class ListaMatriculas(ListView):  # Se utiliza la clase ListView para  crear una
     template_name = 'listas/listamatriculas.html'  # Ubicacion de la plantilla donde se van a mostrar los datos
 
     @method_decorator(csrf_exempt)  # Decorador de la clase
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 

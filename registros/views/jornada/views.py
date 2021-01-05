@@ -44,5 +44,6 @@ class VistaFormularioJornada(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear Jornada'
+        context['url_cancelar'] = success_url = reverse_lazy('listajornada')
         return context
 

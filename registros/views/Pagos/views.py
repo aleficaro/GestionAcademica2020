@@ -45,6 +45,7 @@ class FormularioPago(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Crear Pago'
+        context['title'] = 'Asignar Pago'
         #context['url_nuevo_registro'] = success_url = reverse_lazy('formulariopago')  # se crea url para utilizarla en el boton nuevo registro
+        context['url_cancelar'] = success_url = reverse_lazy('listapagos')
         return context

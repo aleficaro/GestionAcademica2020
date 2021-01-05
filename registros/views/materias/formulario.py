@@ -23,5 +23,10 @@ class FormularioMateria(ModelForm):
                     'placeholder': 'id materia'  # Se le asigna una descripción dentro del campo
                 }
             ),
+            'nmateria': TextInput(
+                attrs={
+                    'placeholder': 'Escribe el nombre de la materia'  # Se le asigna una descripción dentro del campo
+                }
+            ),
 
         }

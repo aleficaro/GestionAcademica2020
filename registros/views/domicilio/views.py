@@ -51,4 +51,5 @@ class FormularioDomicilio(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Crear Domicilio'
         context['url_nuevo_registro'] = success_url = reverse_lazy('formulariodomicilio')  # se crea url para utilizarla en el boton nuevo registro
+        context['url_cancelar'] = success_url = reverse_lazy('listadomicilios')
         return context
