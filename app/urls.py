@@ -17,25 +17,27 @@ from django.contrib import admin
 from django.urls import path
 
 # Se registran las url para poder ser renderizadas
-from login.views import *
-from registros.views.Pagos.views import ListaPagos, FormularioPago
-from registros.views.acudientes.views import ListaAcudientes, FormularioAcudiente
-from registros.views.docentes.views import ListaDocentes
-from registros.views.docentes.views import FormularioDocente
-from registros.views.grados.views import ListaGrados, VistaFormularioGrado
-from registros.views.jornada.views import ListaJornadas, VistaFormularioJornada
-from registros.views.materias.views import ListaMaterias, FormularioMaterias
-from registros.views.matriculas.views import FormularioMatricula
-from registros.views.personas.views import ListaPersona, FormularioPersona, EditarPersona
-from registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
-from registros.views.domicilio.views import ListaDomicilios, FormularioDomicilio
-from registros.views.matriculas.views import ListaMatriculas
+from app.core.login.views import *
+from app.core.registros.views.Pagos.views import ListaPagos, FormularioPago
+from app.core.registros.views.acudientes.views import ListaAcudientes, FormularioAcudiente
+from app.core.registros.views.docentes.views import ListaDocentes
+from app.core.registros.views.docentes.views import FormularioDocente
+from app.core.registros.views.grados.views import ListaGrados, VistaFormularioGrado
+from app.core.registros.views.jornada.views import ListaJornadas, VistaFormularioJornada
+from app.core.registros.views.materias.views import ListaMaterias, FormularioMaterias
+from app.core.registros.views.matriculas.views import FormularioMatricula
+from app.core.registros.views.personas.views import ListaPersona, FormularioPersona, EditarPersona
+from app.core.registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
+from app.core.registros.views.domicilio.views import ListaDomicilios, FormularioDomicilio
+from app.core.registros.views.matriculas.views import ListaMatriculas
+from sistema.sistema.views import VistaSistema
 
 urlpatterns = [
     # Listas
 
     path('admin/', admin.site.urls),
     path('personas/', ListaPersona.as_view(), name='listapersonas'),
+    path('index/', VistaSistema.as_view(), name="index"),
     path('materias/', ListaMaterias.as_view(), name='listamaterias'),
     path('docentes/', ListaDocentes.as_view(), name='listadocentes'),
     path('pagos/', ListaPagos.as_view(), name='listapagos'),

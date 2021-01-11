@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registros.apps.RegistrosConfig',
+    'app.core.registros.apps.RegistrosConfig',
     'widget_tweaks',
-    'login',
+    'app.core.login',
+    'sistema',
 
 ]
 

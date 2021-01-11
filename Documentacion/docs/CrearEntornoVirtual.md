@@ -22,3 +22,6 @@ c) Con el mismo comando anterior se instalan las librerias necesarias en el ento
 
 a) Con el entorno activado: cd proyecto\nombre de la app\ python manage.py runserver
 *******************************************************************************************
+
+5. Crear una app en el proyecto
+a) Con en entorno activado escribir: python manage.py starproject nombre
