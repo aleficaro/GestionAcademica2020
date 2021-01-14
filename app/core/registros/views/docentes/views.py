@@ -12,7 +12,8 @@ from app.core.registros.views.docentes.formulario import FormularioDocente
 
 class ListaDocentes(ListView):
     model = Docente
-    template_name = 'templateBase2/listadocentes.html'
+    template_name = 'listas/listadocentes.html'
+    #template_name = 'listas/listadocentes.html'
 
     @method_decorator(csrf_exempt)
     @method_decorator(login_required)

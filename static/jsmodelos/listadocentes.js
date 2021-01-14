@@ -24,8 +24,8 @@ $(function () {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    var buttons = '<a href="/erp/category/update/' + row.id_pago + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a href="/erp/category/delete/' + row.id_pago + '/" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
+                    var buttons = '<a href="/erp/category/update/' + row.id_pago + '/" class="btn btn-warning btn-xs btn-flat" ><i class="fas fa-edit"></i></a> ';
+                    buttons += '<a href="/erp/category/delete/' + row.id_pago + '/" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash"></i></a>';
                     return buttons;
                 }
             },

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'app.core.registros.apps.RegistrosConfig',
     'widget_tweaks',
     'app.core.login',
-    'sistema',
+
 
 ]
 

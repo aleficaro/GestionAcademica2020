@@ -3,13 +3,9 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-
-
 from app.core.registros.models import Persona
 from django.views.generic import ListView, CreateView, UpdateView
-
 from app.core.registros.views.personas.formulario import Formulariopersona
-
 
 class ListaPersona(ListView):
     model = Persona

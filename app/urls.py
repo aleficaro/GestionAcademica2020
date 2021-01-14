@@ -30,14 +30,14 @@ from app.core.registros.views.personas.views import ListaPersona, FormularioPers
 from app.core.registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
 from app.core.registros.views.domicilio.views import ListaDomicilios, FormularioDomicilio
 from app.core.registros.views.matriculas.views import ListaMatriculas
-from sistema.sistema.views import VistaSistema
+
 
 urlpatterns = [
     # Listas
 
     path('admin/', admin.site.urls),
     path('personas/', ListaPersona.as_view(), name='listapersonas'),
-    path('index/', VistaSistema.as_view(), name="index"),
+
     path('materias/', ListaMaterias.as_view(), name='listamaterias'),
     path('docentes/', ListaDocentes.as_view(), name='listadocentes'),
     path('pagos/', ListaPagos.as_view(), name='listapagos'),
