@@ -12,6 +12,14 @@
 {% block content %}
 
     <div class="card card-default">
+    <style>
+        .card-header{
+            background-color: #dadede;
+            color: #136372;
+        }
+
+
+    </style>
         <div class="card-header"  >
             <h3 class="card-title">
                 {% block icono %}
@@ -38,7 +46,7 @@
 
             <div class="card-footer">
                 <!-- Se le asigna la url al boton desde la vista para que se dinamico ya que es una plantilla base -->
-                <a href="{{ url_nuevo_registro }}" class="btn btn-primary btn-flat" id="nuevoregistro">
+                <a href="{{ url_nuevo_registro }}" class="btn btn-success" id="nuevoregistro">
                     <i class="fas fa-plus"></i> Nuevo registro
                 </a>
             </div>

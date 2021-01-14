@@ -1,0 +1,28 @@
+.login-page {
+    background-color: #3e6f81;
+
+}
+
+#avatar {
+    height: 100px !important;
+    width: 100px !important;
+    background-color: #0f6674;
+    border-radius: 100px;
+    box-shadow: 0px 0px 20px #0c0c0c;
+}
+
+.card-body {
+    box-shadow: 5px 10px 10px #0c0c0c !important;
+}
+
+.btn {
+    background-color: #0f6674;
+    box-shadow: 0px 0px 10px #0c0c0c;
+    border-radius: 100px;
+
+}
+
+.card-header {
+    background-color: #dadede;
+    color: #136372;
+}

@@ -20,11 +20,12 @@
     <link href="{% static 'lib/iPortfolio/assets/img/favicon.png' %}" rel="icon">
 
 </head>
-<body class="hold-transition login-page" >
+<body class="hold-transition login-page">
 
 <div class="login-box">
     <div class="login-logo">
-        <img id="avatar" src="{% static 'lib/myAvatar.png' %} ">
+
+        <img id="avatar" src="{% static 'lib/Avatar.png' %} ">
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -40,7 +41,7 @@
                     {{ form.username | add_class:'form-control' | attr:'autocomplete:off' | attr:'placeholder:Usuario' }}
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
                 </div>
@@ -92,6 +93,9 @@
 <script src="{% static 'lib/iPortfolio/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE App -->
 <script src="{% static 'lib/adminlte-3.0.41/js/adminlte.min.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'lib/estyleLogin.css' %}">
+
 
 </body>
 </html>

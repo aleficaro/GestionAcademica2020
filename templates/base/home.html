@@ -31,12 +31,13 @@
 </head>
 
 <body class="nav-md footer_fixed">
-<div class="container body"  >
-    <div class="main_container" >
+<div class="container body">
+    <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="{% static 'lib/Avatar.png' %}" class="site_title"><i class="fa fa-graduation-cap"></i> <span>Academico</span></a>
+                    <a href="{% static 'lib/Avatar.png' %}" class="site_title"><i class="fa fa-graduation-cap"></i>
+                        <span>Academico</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -47,8 +48,16 @@
                         <img src="{% static 'lib/Avatar.png' %}" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
-                        <span>Bienvenido,</span>
-                        <h2>Usuario Activo</h2>
+                        <!--Se muestra el usuario logueado-->
+                        {% if request.user.is_authenticated %}
+                            <span>Bienvenido,</span>
+                            <h2>{{ request.user.username }}</h2>
+                            </a>
+                            <!--Si no, se redirecciona a Login-->
+                        {% else %}
+                            <a href="{% url 'logout' %}">
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -110,7 +119,7 @@
                     <a data-toggle="tooltip" data-placement="top" title="Lock">
                         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                     </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Salir" href="logout">
+                    <a data-toggle="tooltip" data-placement="top" title="Salir" href="{% url 'logout' %}">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -127,12 +136,16 @@
                 <nav class="nav navbar-nav">
                     <ul class=" navbar-right">
                         <li class="nav-item dropdown open" style="padding-left: 15px;">
+
                             <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+
                                id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{% static 'lib/Avatar.png' %}" alt="">Usuario Activo
+
+                            <img src="{% static 'lib/Avatar.png' %}" alt="">{{ request.user.username }}
                             </a>
                             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="login.html"><i class="glyphicon glyphicon-off"></i>
+                                <a class="dropdown-item" href="{% url 'logout' %}"><i
+                                        class="glyphicon glyphicon-off"></i>
                                     Salir</a>
                             </div>
                         </li>
@@ -158,7 +171,7 @@
 
             {% endblock %}
         </div>
-    <p></p>
+        <p></p>
 
 
         <!-- /page content -->
@@ -188,7 +201,8 @@
 <script src="{% static 'build/vendor/jQuery-Smart-Wizard/js/jquery.smartWizard.js' %}"></script>
 <!-- DataTable -->
 <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
-<link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+<link rel="stylesheet"
+      href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
 <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
 <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
 <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>

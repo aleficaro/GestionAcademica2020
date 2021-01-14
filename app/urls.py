@@ -35,7 +35,7 @@ from app.core.registros.views.matriculas.views import ListaMatriculas
 urlpatterns = [
     # Listas
 
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="admin"),
     path('personas/', ListaPersona.as_view(), name='listapersonas'),
 
     path('materias/', ListaMaterias.as_view(), name='listamaterias'),
