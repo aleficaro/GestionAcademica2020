@@ -31,6 +31,7 @@ class Persona(models.Model):
         jpersonas = model_to_dict(self)
         # se inidica el nombre del campo ['nombres'] utilizado en el ajax, donde se mostrara la informacion.
         jpersonas['nombres'] = '{}'.format(self.nombrecompleto())
+        jpersonas['genero'] = self.get_genero_display()
         return jpersonas
 
     def __str__(self):

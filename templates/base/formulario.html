@@ -20,13 +20,6 @@
             <div class="card-body">
                 {% csrf_token %}
 
-                {% if form.errors %} <!--Esta es la condicion para mostrar errores-->
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                        <h5><i class="icon fas fa-ban"></i> Ha ocurrido un error al querer guardar un registro.</h5>
-                    </div>
-                {% endif %}
-
                 <!--aqui se muestran las etiquetas y los campos del modelo-->
                 {% for campo in form.visible_fields %}
                     <div class="form-group">
@@ -52,7 +45,7 @@
         </div>
     </form>
 
-    <script>
+    <script type="application/javascript">
         {% if form.errors %} //Aqui se evalua si hay errores en el formulario//
             var errores = ''; // Se declara la variable que va a contener los errores
 
@@ -71,7 +64,8 @@
             })
         {% endif %}
 
-        alert_jquery_confirm();
+
     </script>
+
 
 {% endblock content %}

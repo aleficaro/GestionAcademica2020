@@ -26,7 +26,7 @@ SECRET_KEY = '3_oss5h)jmr6)1pmk23lp7&7b_6_ff3y3s%z&wb+lxv8_%7o=b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'app.core.login',
 
-
 ]
 
 MIDDLEWARE = [
@@ -52,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -77,15 +77,25 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'bdacademico',
+#        'USER': 'postgres',
+#        'PASSWORD': 'admin',
+#        'Host': 'localhost',
+#        'PORT': '5432',
+#    }
+# }
+
+# Configuracion de la variable de entorno 'DATABASE_URL' para la base de datos en heroku
+import dj_database_url
+from decouple import config
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bdacademico',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'Host': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # Password validation
@@ -122,6 +132,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Se agrega esta linea cuando va a estar en heroku
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -129,8 +141,11 @@ STATICFILES_DIRS = [
 
 ]
 # Se utiliza esta variable para redireccionar a un template cuando el usuario se loguea correctamente.
-LOGIN_REDIRECT_URL= '/admin'
+LOGIN_REDIRECT_URL = '/admin'
 
-LOGOUT_REDIRECT_URL = '/login/' # constante que redireciona a logout al template que se le indique
+LOGOUT_REDIRECT_URL = '/login/'  # constante que redireciona a logout al template que se le indique
 
 LOGIN_URL = '/login/'
+
+# Esta linea es obligatoria para poder mostrar archivos estaticos
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

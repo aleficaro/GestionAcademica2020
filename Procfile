@@ -1,0 +1,1 @@
+web: gunicorn gestionacademica.wsgi --log-file-

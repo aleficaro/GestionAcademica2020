@@ -25,6 +25,9 @@
     <!-- Custom Theme Style -->
     <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
     <link href="{% static 'lib/datatables-1.10.20/custonDataTable.css' %}" rel="stylesheet">
+
+    <!--swetalert para alertas-->
+    <script src="{% static 'lib/sweetalert2-10.3.5/dist/sweetalert2.all.min.js' %}"></script>
     {% block head %}
 
     {% endblock %}
@@ -141,7 +144,7 @@
 
                                id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
 
-                            <img src="{% static 'lib/Avatar.png' %}" alt="">{{ request.user.username }}
+                                <img src="{% static 'lib/Avatar.png' %}" alt="">{{ request.user.username }}
                             </a>
                             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{% url 'logout' %}"><i
@@ -218,6 +221,7 @@
 <script src="{% static 'lib/datatables-1.10.20/custonDataTable.css' %}"></script>
 <!-- Custom Theme Scripts -->
 <script src="{% static 'build/js/custom.min.js' %}"></script>
+
 
 {% block modelos %}
 

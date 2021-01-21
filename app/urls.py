@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+#Importamos estos dos paquetes cuando va a estar en heroku
+from django.conf import settings
+from django.conf.urls.static import static
+
 # Se registran las url para poder ser renderizadas
 from app.core.login.views import *
 from app.core.registros.views.Pagos.views import ListaPagos, FormularioPago
@@ -26,7 +30,7 @@ from app.core.registros.views.grados.views import ListaGrados, VistaFormularioGr
 from app.core.registros.views.jornada.views import ListaJornadas, VistaFormularioJornada
 from app.core.registros.views.materias.views import ListaMaterias, FormularioMaterias
 from app.core.registros.views.matriculas.views import FormularioMatricula
-from app.core.registros.views.personas.views import ListaPersona, FormularioPersona, EditarPersona
+from app.core.registros.views.personas.views import ListaPersona, FormularioPersona
 from app.core.registros.views.estudiante.views import ListaEstudiantes, FormularioEstudiante
 from app.core.registros.views.domicilio.views import ListaDomicilios, FormularioDomicilio
 from app.core.registros.views.matriculas.views import ListaMatriculas
@@ -62,10 +66,12 @@ urlpatterns = [
 
     # Editar
 
-    path('editar_persona/<int:pk>', EditarPersona.as_view(), name='editarpersona'),
+
+    # Registra con Modal
+
 
     # Inicio y cierre de sesion
     path('login/', FormularioLogin.as_view()),
     path('logout/', LogoutView.as_view(), name='logout'),  # Url para cerrar sesión e ir al template de login
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # Se agrega esta linea de codigo cuando va a esatr heroku

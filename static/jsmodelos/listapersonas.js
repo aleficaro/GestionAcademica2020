@@ -33,5 +33,7 @@ $(function () {
         initComplete: function (settings, json) {
 
         }
+
     });
+    $('#miModal').modal('show');
 });
