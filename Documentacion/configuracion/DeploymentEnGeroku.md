@@ -59,7 +59,30 @@ Este archivo se crea para que gunicorn ejecute el archivo wsgi del proyecto
 
 1. Crear un archivo de tipo texto al mismo nivel del manage.py con el nombre Procfile y agregamos la siguiente linea
 * web: gunicorn gestionacademica.wsgi --log-file-
+
     
+## Sexto Paso
+###Crear un commit de los cambios en git
+
+1. Desde consola:
+* git add --all
+* git commit -m "Mensaje"
+
+## Septimo Paso
+###Crear un proyecto en Heroku: Se debe tener una cuenta activa
+1. Instalar HerokuCli desde https://devcenter.heroku.com/articles/heroku-cli para poderlo utilizar desde la terminal
+2. Loguerse desde la consola o terminal
+* heroku login
+* Iniciamos sesion en la pagina donde nos lanzo
+3. Creamos el proyecto asi
+* heroku create nombredelproyecto
+4. Agregamos el repositorio de git a heroku
+*heroku git:remote -a nombredelproyecto
+5. Creamos la base de datos asi
+* heroku addons:create heroku-postgresql:hobby-dev
+6. Subimos el repositorio de git a keroku este proceso tarda segun el tamaño del proyecto
+* git push heroku master 
+
 
 
     
